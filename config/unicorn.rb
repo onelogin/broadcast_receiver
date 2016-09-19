@@ -19,31 +19,31 @@ end
 
 # Help ensure your application will always spawn in the symlinked
 # "current" directory that Capistrano sets up.
-working_directory '/srv/broadcast_reciever/current' # available in 0.94.0+
+working_directory '/srv/broadcast_receiver/current' # available in 0.94.0+
 
 # listen on both a Unix domain socket and a TCP port,
 # we use a shorter backlog for quicker failover when busy
-listen '/tmp/unicorn.broadcast_reciever.sock', backlog: 74
-# listen 8080, :tcp_nopush => true
+# listen '/tmp/unicorn.broadcast_receiver.sock', backlog: 74
+listen 8080, tcp_nopush: true
 
 # nuke workers after 180 seconds instead of 60 seconds (the default)
 timeout 180
 
 # feel free to point this anywhere accessible on the filesystem
-pid '/tmp/unicorn.broadcast_reciever.pid'
+pid '/tmp/unicorn.broadcast_receiver.pid'
 
 # By default, the Unicorn logger will write to stderr.
 # Additionally, ome applications/frameworks log to stderr or stdout,
 # so prevent them from going to /dev/null when daemonized here:
-stderr_path '/var/log/broadcast_reciever/unicorn.broadcast_reciever.stderr.log'
-stdout_path '/var/log/broadcast_reciever/unicorn.broadcast_reciever.stdout.log'
+stderr_path '/srv/broadcast_receiver/current/log/unicorn.broadcast_receiver.stderr.log'
+stdout_path '/srv/broadcast_receiver/current/log/unicorn.broadcast_receiver.stdout.log'
 
 # combine REE with "preload_app true" for memory savings
 # http://rubyenterpriseedition.com/faq.html#adapt_apps_for_cow
 preload_app true
 
 before_exec do |_server|
-  ENV['BUNDLE_GEMFILE'] = '/srv/broadcast_reciever/current/Gemfile'
+  ENV['BUNDLE_GEMFILE'] = '/srv/broadcast_receiver/current/Gemfile'
 end
 
 before_fork do |_server, _worker|

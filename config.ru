@@ -4,6 +4,6 @@ require 'rubygems'
 require 'sinatra'
 # require 'pry'
 
-require File.expand_path '../broadcast_reciever.rb', __FILE__
+require File.expand_path '../broadcast_receiver.rb', __FILE__
 
-run BroadcastReciever
+run BroadcastReceiver

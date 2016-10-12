@@ -2,28 +2,30 @@
 ## OneLogin events receiver to test Event Broadcasters
 
 ## Overview
-The included project is for the purpose of receiving onelogin's account activity. It's a small server which gets events from Event Broadcaster and save it to the file, where you can analyze it.
+This project is for the purpose of receiving event activity from a OneLogin account. It's a small server that gets events from a OneLogin Event Broadcaster and saves it to a file, where you can analyze it.
 
-OneLogin will review and test changes proposed by the opensource community on a qarterly basis.
+OneLogin will review and test changes proposed by the open source community on a quarterly basis.
 
 ## Build
-These projects are written in Ruby. Requirements for building include:
+This project is written in Ruby. Build requirements include:
 
 1. `2.3.1` version of Ruby
 
-### Dev Environment Setup Instructions
+### Dev Environment Setup
 1. `cd; git clone https://github.com/onelogin/broadcast_receiver.git; cd broadcast_receiver`
 2. `bundle`
 3. `bundle exec rackup`
 
-By default server runs on port `9292`. But you can change it by passing `-p` key with port value:
+By default, the server runs on port `9292`. You can change it by passing the `-p` key with the port value:
 ```sh
 bundle exec rackup -p12345
 ```
-Now share a web service on your local development machine to the world. This shared address you should use as `Listener URL` for the Event Broadcaster.
+Share a web service on your local development machine to the world. Use this shared address as the `Listener URL` for the Event Broadcaster. 
+
+For info about setting up Event Broadcasters, see the [OneLogin support article](https://support.onelogin.com/hc/en-us/articles/215214143).
 
 ## Starting
-You can run server in `development` mode (received data will be printed in console) or `production` mode (received data will be stored in `log/broadcast_receiver.log`)
+You can run the server in `development` mode (received data will be printed in the console) or `production` mode (received data will be stored in `log/broadcast_receiver.log`)
 
 ### Unicorn
 Production - `bundle exec unicorn -E production -c config/unicorn.rb`
@@ -33,8 +35,8 @@ Development - `bundle exec rackup`
 
 Production - `bundle exec rackup -E production`
 
-## Data analyzing
-Event request data are stored to the `log/broadcast_receiver.log` in format:
+## Data analysis
+Event request data are stored in the `log/broadcast_receiver.log` in format:
 
 ```
 I, [2016-09-29T13:05:48.188260 #1411]  INFO -- : Received:
@@ -62,4 +64,4 @@ I, [2016-09-29T13:05:48.188260 #1411]  INFO -- : Received:
   ...
 ]
 ```
-Every request contains array with 10 or less events.
+Every request contains an array with 10 or less events.

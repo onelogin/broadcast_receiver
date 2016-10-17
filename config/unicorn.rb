@@ -24,7 +24,7 @@ working_directory '/srv/broadcast_receiver/current' # available in 0.94.0+
 # listen on both a Unix domain socket and a TCP port,
 # we use a shorter backlog for quicker failover when busy
 # listen '/tmp/unicorn.broadcast_receiver.sock', backlog: 74
-listen 8080, tcp_nopush: true
+listen 9292, tcp_nopush: true
 
 # nuke workers after 180 seconds instead of 60 seconds (the default)
 timeout 180

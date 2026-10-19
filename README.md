@@ -20,7 +20,7 @@ By default, the server runs on port `9292`. You can change it by passing the `-p
 ```sh
 bundle exec rackup -p12345
 ```
-Share a web service on your local development machine to the world. Use this shared address as the `Listener URL` for the Event Broadcaster. 
+Share a web service on your local development machine to the world. Use this shared address as the `Listener URL` for the Event Broadcaster. The receiver accepts events POSTed to either `/` or `/_bulk`.
 
 For info about setting up Event Broadcasters, see the [OneLogin support article](https://support.onelogin.com/hc/en-us/articles/215214143).
 

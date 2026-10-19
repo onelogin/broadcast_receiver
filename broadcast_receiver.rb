@@ -14,9 +14,11 @@ class BroadcastReceiver < Sinatra::Application
     $logger = Logger.new(STDOUT)
   end
 
-  post '/_bulk' do
-    content_type :json
-    logger.info("Received: #{request.body.read}")
-    {}.to_json
+  ['/', '/_bulk'].each do |path|
+    post path do
+      content_type :json
+      logger.info("Received: #{request.body.read}")
+      {}.to_json
+    end
   end
 end

@@ -9,7 +9,7 @@ OneLogin will review and test changes proposed by the open source community on a
 ## Build
 This project is written in Ruby. Build requirements include:
 
-1. `2.3.1` version of Ruby
+1. Ruby 3.4
 
 ### Dev Environment Setup
 1. `cd; git clone https://github.com/onelogin/broadcast_receiver.git; cd broadcast_receiver`
@@ -30,7 +30,7 @@ You can run the server in `development` mode (received data will be printed in t
 ### Unicorn
 Production - `bundle exec unicorn -E production -c config/unicorn.rb`
 
-### Webrik
+### WEBrick
 Development - `bundle exec rackup`
 
 Production - `bundle exec rackup -E production`

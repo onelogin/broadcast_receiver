@@ -12,6 +12,11 @@ class BroadcastReceiver < Sinatra::Application
 
   configure :development do
     $logger = Logger.new(STDOUT)
+
+    # In development Sinatra only permits localhost, *.localhost, *.test and IP
+    # Host headers by default, which rejects the public hostname used as the
+    # Listener URL.
+    set :host_authorization, { permitted_hosts: [] }
   end
 
   ['/', '/_bulk'].each do |path|
